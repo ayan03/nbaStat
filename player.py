@@ -14,13 +14,17 @@ class Player:
 		self.threeptPct = None
 		self.fantasyScore = None
 
+	#basic statline
 	def statLine(self): 
 		if age == None and height == None and weight == None and team == None:
 			print("Player information needs to be updated")
 		else:
 			#not complete
 			print ("Name: ", self.name, ", Position: ", self.position, ", Team: ", self.team, ", Age: ", self.age, ", Height: ", self.height)
-		
+	
+
+
+	#calculates the total ESPN fantasy basketball points
 	def calcFScore(self):
 		total = 0
 
