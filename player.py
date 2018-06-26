@@ -1,9 +1,9 @@
 class Player:
 
-	def __init__(self, name, position):
+	def __init__(self, name, age, position):
 		self.name = name
 		self.position = position
-		self.age = None
+		self.age = age
 		self.height = None
 		self.weight = None
 		self.team = None
@@ -13,6 +13,12 @@ class Player:
 		self.shootingPct = None
 		self.threeptPct = None
 		self.fantasyScore = None
+
+	def __repr__(self):
+		return "{!r}".format(self.name)
+
+	def __eq__(self, other):
+		return (type(other) == Player and self.name == other.name and self.position == other.position)
 
 	#basic statline
 	def statLine(self): 
