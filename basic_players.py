@@ -8,9 +8,26 @@ def basic_players():
 	players = []
 	pbl = create_basic_dataset('https://basketball.realgm.com/nba/players')
 	for player in pbl:
-		players.append(Player(player[0], player[1], player[2]))
+		nba_player = Player(player[0], player[1], player[2])
+
+		#sets the height and weight field for each player
+		nba_player.height = player[3]
+		nba_player.weight = player[4]
+		nba_player.team = player[5]
+
+		players.append(nba_player)
 	return players
+
+def mod_list(player_list):
+
+#takes in a list of players for formatting each field and returns a formatted list
+def format_list(player_list):
+	for player in player_list:
+		#formats height from 6-6 to 6'6"
+		player.height = """ {ft}'{inch}" """.format(ft = player.height[0], inch = player.height[2])
+	return player_list
 
 
 #tester
-print(basic_players()[10].position)
+#print(basic_players()[0].height)
+print(format_list(basic_players())[0].statLine())

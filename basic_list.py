@@ -23,9 +23,30 @@ def create_basic_dataset(url):
 	#creates a list of player positions
 	positions = df["Pos"].tolist()
 
-	basic_player_dataset = list(zip(players, ages, positions))
+	#creates a list of player heights
+	height = df["HT"].tolist()
+
+	#creates a list of player weights
+	weight = df["WT"].tolist()
+
+	#creates a list of player teams
+	team = df["Current Team"].tolist()
+
+	basic_player_dataset = list(zip(players, ages, positions, height, weight, team))
 
 	return basic_player_dataset
 
+def fill_basic_dataset(url):
+	r = requests.get(url)
+	soup = BeautifulSoup(r.content, 'lxml')
+	table = soup.find_all('table')
+	df = pd.read_html(str(table))[0]
+	return df
+
+	
+
+
+print(fill_basic_dataset('https://basketball.realgm.com/nba/stats/2018/Averages/Qualified/points/All/desc/1/Regular_Season'))
+
 #tester
-print(create_basic_dataset('https://basketball.realgm.com/nba/players'))
+#print(create_basic_dataset('https://basketball.realgm.com/nba/players')[0][0])
