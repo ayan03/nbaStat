@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>{% block title %}NBA{% endblock %}</title>
+</head>
+<body>
+    
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Teams</a>
+        <a href="#">Contact Us</a>
+    </nav>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <hr>
+
+    {% block footer %}
+        This is footer
+    {% endblock %}
+
+</body>
+</html>
