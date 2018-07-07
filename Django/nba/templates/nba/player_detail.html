@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ player.name|capfirst }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}    
+
+    <div class="content">
+        <div class="section-inner clearfix">        
+
+        <h1>{{ player.name|capfirst }}</h1>
+        <p class="player-info">
+            <span>Age: {{ player.age }} |</span>
+            <span>Team: <a href="http://127.0.0.1:8000/team/{{ player.team.slug }}">{{ player.team.name }}</a>
+            </span>
+        </p>
+        
+
+        </div>
+    </div>
+
+{% endblock %}

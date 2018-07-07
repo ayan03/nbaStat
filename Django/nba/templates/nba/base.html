@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}myNBA{% endblock %}</title>        
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="section-inner clearfix">
+            <nav>
+                <a href="/">Home</a>
+                <a href="#">Teams</a>
+                <a href="#">Contact Us</a>
+            </nav>
+        </div>
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% block footer %}
+
+    <div class="footer">
+        <div class="section-inner clearfix">
+            <hr>
+            <p>&copy; myNBA Footer</p>
+        </div>
+    </div>
+
+    {% endblock %}
+
+</body>
+</html>

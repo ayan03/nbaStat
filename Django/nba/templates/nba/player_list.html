@@ -1,0 +1,28 @@
+{% extends "nba/base.html"  %}
+
+{% block title %}
+    myNBA - {{ block.super }}
+{% endblock %}
+
+{% block content %}    
+
+    <div class="content">
+        <div class="section-inner clearfix">        
+
+        {% for player in players %}
+            <h3>                        
+                <a href="http://127.0.0.1:8000/{{ player.pk }}/">{{ player.name|capfirst }}</a>
+            </h3>
+            <p class="player-info">
+                <span>Age: {{ player.age }} </span> |
+                <span>Team: <a href="http://127.0.0.1:8000/team/{{ player.team }}">{{ player.team.name }}</a></span> |
+                
+            </p>
+        {% empty %}
+            <p>There are no players</p>
+        {% endfor %}    
+
+        </div>
+    </div>
+
+{% endblock %}
