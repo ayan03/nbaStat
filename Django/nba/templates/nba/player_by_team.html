@@ -6,6 +6,18 @@
 
 {% block content %}
 
+    <div class="navbar">
+        <div class="section-inner clearfix">
+            <h2>Order by:</h2>
+            <nav> 
+                <a href="http://127.0.0.1:8000/team/{{ team.name }}/points">Points</a>
+                <a href="http://127.0.0.1:8000/team/{{ team.name }}/assists">Assists</a>
+                <a href="http://127.0.0.1:8000/team/{{ team.name }}/defreb">Rebounds</a>
+                <a href="http://127.0.0.1:8000/team/{{ team.name }}/steals">Steals</a>
+            </nav>
+        </div>
+    </div>
+
     <div class="content">
         <div class="section-inner clearfix">
 
@@ -18,6 +30,11 @@
         <p class="player-info">
             <span>Age: {{ player.age }} </span> |
             <span>Team: <a href="http://127.0.0.1:8000/team/{{ player.team }}">{{ player.team.name }}</a></span> |
+            <span>Points: {{ player.points }} |</span>
+            <span>Assists: {{ player.assists }} |</span>
+            <span>Offensive Rebounds: {{ player.ofreb }} |</span>
+            <span>Defensive Rebounds: {{ player.defreb }} |</span>
+            <span>Steals: {{ player.steals }} |</span>
         </p>
     {% empty %}
         <p>There are no players under {{ team }}</p>

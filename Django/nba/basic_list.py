@@ -28,4 +28,5 @@ def create_basic_dataset(url):
 	return basic_player_dataset
 
 #tester
+#https://www.basketball-reference.com/leagues/NBA_2018_per_game.html
 #print(create_basic_dataset('https://basketball.realgm.com/nba/players'))
