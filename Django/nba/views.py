@@ -25,6 +25,71 @@ def player_list_cats(request, cat_slug):
 	players = Player.objects.all().order_by('-' + cat_slug)
 	return render(request, 'nba/player_list.html', {'players': players})
 
+	# Shows all players by position:
+def player_by_pos(request, pos_slug):
+	pgs = Player.objects.all().filter(pos='PG')
+	sgs = Player.objects.all().filter(pos='SG') 
+	sfs = Player.objects.all().filter(pos='SF')
+	pfs = Player.objects.all().filter(pos='PF')
+	cs = Player.objects.all().filter(pos='C')
+	gs = Player.objects.all().filter(pos='G')
+	fs = Player.objects.all().filter(pos='F')
+	fcs = Player.objects.all().filter(pos='FC')
+	gfs = Player.objects.all().filter(pos='GF')
+	if pos_slug == 'guard':
+		ps = pgs|sgs|gs|gfs
+	elif pos_slug == 'pg':
+		ps = pgs|gs
+	elif pos_slug == 'sg':
+		ps = sgs|gs|gfs
+	elif pos_slug == 'sf':
+		ps = sfs|gfs|fs
+	elif pos_slug == 'pf':
+		ps = pfs|fcs|fs
+	elif pos_slug == 'forward':
+		ps = sfs|pfs|fs|fcs|gfs
+	elif pos_slug == 'center':
+		ps = cs|fcs
+	players = ps
+	context = {
+		'pos': pos_slug,
+		'players': players
+	}
+	return render(request, 'nba/player_by_pos.html', context)
+
+#same as above but organize by category
+def player_by_pos_cats(request, pos_slug, cat_slug):
+	pgs = Player.objects.all().filter(pos='PG')
+	sgs = Player.objects.all().filter(pos='SG') 
+	sfs = Player.objects.all().filter(pos='SF')
+	pfs = Player.objects.all().filter(pos='PF')
+	cs = Player.objects.all().filter(pos='C')
+	gs = Player.objects.all().filter(pos='G')
+	fs = Player.objects.all().filter(pos='F')
+	fcs = Player.objects.all().filter(pos='FC')
+	gfs = Player.objects.all().filter(pos='GF')
+	if pos_slug == 'guard':
+		ps = pgs|sgs|gs|gfs
+	elif pos_slug == 'pg':
+		ps = pgs|gs
+	elif pos_slug == 'sg':
+		ps = sgs|gs|gfs
+	elif pos_slug == 'sf':
+		ps = sfs|gfs|fs
+	elif pos_slug == 'pf':
+		ps = pfs|fcs|fs
+	elif pos_slug == 'forward':
+		ps = sfs|pfs|fs|fcs|gfs
+	elif pos_slug == 'center':
+		ps = cs|fcs
+	players = ps.order_by('-'+cat_slug)
+	context = {
+		'pos': pos_slug,
+		'players': players
+	}
+	return render(request, 'nba/player_by_pos.html', context)
+
+
 # Shows a player's individual stats
 def player_detail(request, pk):    
     player = Player.objects.get(pk=pk)

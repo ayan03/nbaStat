@@ -18,12 +18,16 @@ def create_basic_dataset(url):
 	players = df["Player"].tolist()
 
 	#creates a list of player ages
-	ages = df["Age"].tolist()
+    #ages = df["Age"].tolist()
 
 	#creates a list of player positions
-	teams = df["Current Team"].tolist()
+    #teams = df["Current Team"].tolist()
 
-	basic_player_dataset = list(zip(players, ages, teams))
+#	basic_player_dataset = list(zip(players, ages, teams))
+
+    positions = df["Pos"].tolist()
+
+    basic_player_dataset = list(zip(players, positions))
 
 	return basic_player_dataset
 

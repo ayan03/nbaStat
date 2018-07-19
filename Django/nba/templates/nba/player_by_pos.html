@@ -1,19 +1,34 @@
 {% extends "nba/base.html"  %}
 
 {% block title %}
-    {{ team }} - {{ block.super }}
+    {{ pos }} - {{ block.super }}
 {% endblock %}
 
 {% block content %}
+
+     <div class="navbar">
+        <div class="section-inner clearfix">
+            <h2>Positions:</h2>
+            <nav> 
+                <a href="http://127.0.0.1:8000/positions/pg">PG     |     </a>
+                <a href="http://127.0.0.1:8000/positions/sg">SG     |     </a>
+                <a href="http://127.0.0.1:8000/positions/sf">SF     |     </a>
+                <a href="http://127.0.0.1:8000/positions/pf">PF     |     </a>
+                <a href="http://127.0.0.1:8000/positions/center">C     |     </a>
+                <a href="http://127.0.0.1:8000/positions/guard">Guard     |     </a>
+                <a href="http://127.0.0.1:8000/positions/forward">Forward     |     </a>
+            </nav>
+        </div>
+    </div>
 
     <div class="navbar">
         <div class="section-inner clearfix">
             <h2>Order by:</h2>
             <nav> 
-                <a href="http://127.0.0.1:8000/team/{{ team.name }}/points">Points</a>
-                <a href="http://127.0.0.1:8000/team/{{ team.name }}/assists">Assists</a>
-                <a href="http://127.0.0.1:8000/team/{{ team.name }}/defreb">Rebounds</a>
-                <a href="http://127.0.0.1:8000/team/{{ team.name }}/steals">Steals</a>
+                <a href="http://127.0.0.1:8000/positions/{{ pos }}/points">Points</a>
+                <a href="http://127.0.0.1:8000/positions/{{ pos }}/assists">Assists</a>
+                <a href="http://127.0.0.1:8000/positions/{{ pos }}/defreb">Rebounds</a>
+                <a href="http://127.0.0.1:8000/positions/{{ pos }}/steals">Steals</a>
             </nav>
         </div>
     </div>
@@ -21,7 +36,7 @@
     <div class="content">
         <div class="section-inner clearfix">
 
-    <h4>All the players for {{ team.name }}</h4>
+    <h4>All the players for {{ pos }}</h4>
 
     {% for player in players %}
         <h3>

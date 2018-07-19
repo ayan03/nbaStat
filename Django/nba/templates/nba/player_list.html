@@ -8,6 +8,17 @@
 
     <div class="navbar">
         <div class="section-inner clearfix">
+            <h2>Positions:</h2>
+            <nav> 
+                <a href="http://127.0.0.1:8000/positions/guard">Guard</a>
+                <a href="http://127.0.0.1:8000/positions/forward">Forward</a>
+                <a href="http://127.0.0.1:8000/positions/center">Center</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class="section-inner clearfix">
             <h2>Order by:</h2>
             <nav> 
                 <a href="http://127.0.0.1:8000/categories/points">Points</a>
@@ -28,6 +39,7 @@
             <p class="player-info">
                 <span>Age: {{ player.age }} </span> |
                 <span>Team: <a href="http://127.0.0.1:8000/team/{{ player.team }}">{{ player.team.name }}</a></span> |
+                <span>Position: {{ player.pos }} |
                 <span>Points: {{ player.points }} |</span>
                 <span>Assists: {{ player.assists }} |</span>
                 <span>Offensive Rebounds: {{ player.ofreb }} |</span>
