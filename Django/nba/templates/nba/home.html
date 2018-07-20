@@ -15,18 +15,22 @@
         check back in soon and we will be able to help you with your fantasy needs</p>
     </div>
     <div>
-    	<form action="/team/Oklahoma City Thunder" method="post">
-    		{{ form.as_p }}
-  			Player 1 Name:   
+    	{% if error %}
+        	<p style="color: red;">Please submit a search term.</p>
+    	{% endif %}
+    	<form action="/search/" method="get">
+  			Player 1 Name:
   				<input type="text" name="name">   |
   			   Player 1 Team:
   				<input type="text" name="team"><br>
   			Player 2 Name:
-  				<input type="text" name="name">   |
+  				<input type="text" name="name2">   |
   			Player 2 Team:   
   				<input type="text" name="team">
-  				<input type="submit" value="Submit"><br>
+  				<input type="submit" value="Search"><br>
 		</form>
+
+
     </div>
 
 {% endblock %}

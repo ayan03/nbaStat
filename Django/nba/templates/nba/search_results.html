@@ -1,0 +1,36 @@
+{% extends "nba/home.html"  %}
+
+{% block title %}
+    myNBA - {{ block.super }}
+{% endblock %}
+
+{% block content %}    
+
+
+    <div class="content">
+        
+   
+        {% if players %}           
+            {% for player in players %}
+              <p>
+                <h1>{{ player.name|capfirst }}</h1>
+                <span>Age: {{ player.age }} |</span>
+                <span>Team: <a href="http://127.0.0.1:8000/team/{{ player.team }}">{{ player.team.name }}</a> |
+                </span>
+                <span>Position: {{ player.pos }} |</span>    
+                <span>Height: {{ player.height }} |</span>
+                <span>Weight: {{ player.weight }} |</span>
+              </p>
+              <p>
+                <span>Points: {{ player.points }} |</span>
+                <span>Assists: {{ player.assists }} |</span>
+                <span>Offensive Rebounds: {{ player.ofreb }} |</span>
+                <span>Defensive Rebounds: {{ player.defreb }} |</span>
+                <span>Steals: {{ player.steals }} |</span>
+            {% endfor %}
+        {% else %}           
+            <p>No players matched your search criteria.</p>       
+        {% endif %}  
+    </div>
+
+{% endblock %}
