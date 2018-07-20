@@ -14,6 +14,8 @@ class Player(models.Model):
 	name = models.CharField(max_length=100)
 	pos = models.CharField(max_length=5, default='null')
 	age = models.FloatField(max_length=3)
+	height = models.CharField(max_length=4, default='null')
+	weight = models.FloatField(max_length=3, default=0)
 	team = models.ForeignKey(Team, models.SET_NULL, blank=True, null=True,)
 	points = models.FloatField(max_length=3, default=0)
 	assists = models.FloatField(max_length=3, default=0)

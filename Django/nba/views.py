@@ -7,8 +7,8 @@ from django.conf import settings
 from .models import Player, Team
 
 # Create your views here.
-def index(request):
-	return HttpResponse("hello try 2 world")
+def home(request):
+	return render(request, 'nba/home.html')
 
 # Shows all teams:
 def team_list(request):
