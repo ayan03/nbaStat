@@ -5,9 +5,16 @@ from django import template
 from django.shortcuts import render_to_response
 from django.conf import settings
 from .models import Player, Team
+from .forms import playerForm, teamForm
 
 # Create your views here.
 def home(request):
+	#checks if method is a get
+	if request.method == 'GET':
+		form = playerForm(request.GET)
+		#check if valid
+		if form.is_valid():
+			return render(request, 'nba/team_list.html', {'teams': 'Oklahoma City Thunder'})
 	return render(request, 'nba/home.html')
 
 # Shows all teams:
