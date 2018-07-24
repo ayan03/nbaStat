@@ -8,26 +8,64 @@
 
 
     <div class="content">
-        
-   
-        {% if players %}           
-            {% for player in players %}
+
+        {% if player1 and player2 %}
               <p>
-                <h1>{{ player.name|capfirst }}</h1>
-                <span>Age: {{ player.age }} |</span>
-                <span>Team: <a href="http://127.0.0.1:8000/team/{{ player.team }}">{{ player.team.name }}</a> |
+                <h1>{{ player1.name|capfirst }} vs. {{ team1.name }}</h1>
+                <span>Age: {{ player1.age }} |</span>
+                <span>Team: <a href="http://127.0.0.1:8000/team/{{ player1.team }}">{{ player1.team.name }}</a> |
                 </span>
-                <span>Position: {{ player.pos }} |</span>    
-                <span>Height: {{ player.height }} |</span>
-                <span>Weight: {{ player.weight }} |</span>
+                <span>Position: {{ player1.pos }} |</span>    
+                <span>Height: {{ player1.height }} |</span>
+                <span>Weight: {{ player1.weight }} |</span>
               </p>
               <p>
-                <span>Points: {{ player.points }} |</span>
-                <span>Assists: {{ player.assists }} |</span>
-                <span>Offensive Rebounds: {{ player.ofreb }} |</span>
-                <span>Defensive Rebounds: {{ player.defreb }} |</span>
-                <span>Steals: {{ player.steals }} |</span>
-            {% endfor %}
+                <span>Points: {{ player1.points }} |</span>
+                <span>Assists: {{ player1.assists }} |</span>
+                <span>Offensive Rebounds: {{ player1.ofreb }} |</span>
+                <span>Defensive Rebounds: {{ player1.defreb }} |</span>
+                <span>Steals: {{ player1.steals }} |</span>
+                <h3>Matchup analysis:</h3>
+                  <h4>Strengths:</h4>
+                    {% for adv in adv1%}
+                      <span>| {{ adv }} |</span>
+                    {% empty %}
+                      <p>There are no strengths for {{ team1.name }}</p>
+                    {% endfor %}
+                  <h4>Weaknesses:</h4>
+                    {% for weak in weak1%}
+                      <span>| {{ weak }} |</span>
+                    {% empty %}
+                      <p>There are no weaknesses for {{ team1.name }}</p>
+                    {% endfor %}
+              <p>
+                <h1>{{ player2.name|capfirst }} vs. {{ team2.name }}</h1>
+                <span>Age: {{ player2.age }} |</span>
+                <span>Team: <a href="http://127.0.0.1:8000/team/{{ player2.team }}">{{ player2.team.name }}</a> |
+                </span>
+                <span>Position: {{ player2.pos }} |</span>    
+                <span>Height: {{ player2.height }} |</span>
+                <span>Weight: {{ player2.weight }} |</span>
+              </p>
+              <p>
+                <span>Points: {{ player2.points }} |</span>
+                <span>Assists: {{ player2.assists }} |</span>
+                <span>Offensive Rebounds: {{ player2.ofreb }} |</span>
+                <span>Defensive Rebounds: {{ player2.defreb }} |</span>
+                <span>Steals: {{ player2.steals }} |</span>
+              <h3>Matchup analysis:</h3>
+                <h4>Strengths:</h4>
+                    {% for adv in adv2%}
+                      <span>| {{ adv }} |</span>
+                    {% empty %}
+                      <p>There are no strengths for {{ team2.name }}</p>
+                    {% endfor %}
+                  <h4>Weaknesses:</h4>
+                    {% for weak in weak2%}
+                      <span>| {{ weak }} |</span>
+                    {% empty %}
+                      <p>There are no weaknesses for {{ team2.name }}</p>
+                    {% endfor %}
         {% else %}           
             <p>No players matched your search criteria.</p>       
         {% endif %}  

@@ -22,6 +22,7 @@ class Player(models.Model):
 	ofreb = models.FloatField(max_length=3, default=0)
 	defreb = models.FloatField(max_length=3, default=0)
 	steals = models.FloatField(max_length=3, default=0)
+	fpoints = models.FloatField(max_length=3, default=0)
 
 
 	def __str__(self):

@@ -23,7 +23,21 @@
     <div class="content">
         <div class="section-inner clearfix">
 
-    <h4>All the players for {{ team.name }}</h4>
+    <h1>{{ team.name }}</h1>
+    <h3>Advantages: 
+        {% for advantage in advantages %}
+            <span>| {{ advantage }} |</span>
+        {% empty %}
+            <span>Can't find any, this is a shit team</span>
+        {% endfor %}
+    </h3>
+    <h3>Weaknesses: 
+        {% for weakness in weaknesses %}
+            <span>| {{ weakness }} |</span>
+        {% empty %}
+            <span>Can't find any, this is a superteam</span>
+        {% endfor %}
+    </h3>
 
     {% for player in players %}
         <h3>
