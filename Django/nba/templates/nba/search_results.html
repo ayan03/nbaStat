@@ -26,13 +26,13 @@
                 <span>Defensive Rebounds: {{ player1.defreb }} |</span>
                 <span>Steals: {{ player1.steals }} |</span>
                 <h3>Matchup analysis:</h3>
-                  <h4>Strengths:</h4>
+                  <h4>Strengths for {{ team1.name }}:</h4>
                     {% for adv in adv1%}
                       <span>| {{ adv }} |</span>
                     {% empty %}
                       <p>There are no strengths for {{ team1.name }}</p>
                     {% endfor %}
-                  <h4>Weaknesses:</h4>
+                  <h4>Weaknesses for {{ team1.name }}:</h4>
                     {% for weak in weak1%}
                       <span>| {{ weak }} |</span>
                     {% empty %}
@@ -54,13 +54,13 @@
                 <span>Defensive Rebounds: {{ player2.defreb }} |</span>
                 <span>Steals: {{ player2.steals }} |</span>
               <h3>Matchup analysis:</h3>
-                <h4>Strengths:</h4>
+                <h4>Strengths for {{ team2.name }}:</h4>
                     {% for adv in adv2%}
                       <span>| {{ adv }} |</span>
                     {% empty %}
                       <p>There are no strengths for {{ team2.name }}</p>
                     {% endfor %}
-                  <h4>Weaknesses:</h4>
+                  <h4>Weaknesses for {{ team2.name }}:</h4>
                     {% for weak in weak2%}
                       <span>| {{ weak }} |</span>
                     {% empty %}

@@ -25,7 +25,7 @@ def search(request):
 				error = True
 			else:
 				teams2 = Team.objects.values('name').distinct().filter(name=team2)
-
+				teams = teams|teams2
 				## finds advantages of the two teams
 				p1 = Player.objects.filter(team__name=team1)
 				p2 = Player.objects.filter(team__name=team2)
@@ -48,7 +48,7 @@ def search(request):
 				else:
 					players2 = Player.objects.filter(name=name2)
 					players = players|players2
-			if players.count() > 0 and teams.count() > 0:
+			if players.count() == 2 and teams.count() == 2:
 				return render(request, 'nba/search_results.html', {'player1': players[0], 'player2': players[1], 
 							'query': name, 'team1': teams[0], 'team2': teams[1], 'adv1': adv1, 'weak1': weak1, 
 							'adv2': adv2, 'weak2': weak2})
