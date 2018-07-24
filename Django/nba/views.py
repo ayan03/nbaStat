@@ -25,7 +25,6 @@ def search(request):
 				error = True
 			else:
 				teams2 = Team.objects.values('name').distinct().filter(name=team2)
-				teams = teams|teams2
 
 				## finds advantages of the two teams
 				p1 = Player.objects.filter(team__name=team1)
@@ -49,9 +48,12 @@ def search(request):
 				else:
 					players2 = Player.objects.filter(name=name2)
 					players = players|players2
-			return render(request, 'nba/search_results.html', {'player1': players[0], 'player2': players[1], 
+			if players.count() > 0 and teams.count() > 0:
+				return render(request, 'nba/search_results.html', {'player1': players[0], 'player2': players[1], 
 							'query': name, 'team1': teams[0], 'team2': teams[1], 'adv1': adv1, 'weak1': weak1, 
 							'adv2': adv2, 'weak2': weak2})
+			error = True
+			return render(request, 'nba/home.html', {'error': error})
 	return render(request, 'nba/home.html', {'error': error})
 
 # Shows all teams:
@@ -165,6 +167,8 @@ def find_advantages(players):
 	rebounds = 0
 	team_size = len(players)
 	advantages = []
+	if team_size == 0:
+		return advantages
 	for player in players:
 		points += player.points
 		rebounds += player.defreb + player.ofreb
@@ -182,6 +186,8 @@ def find_weaknesses(players):
 	height = 0
 	team_size = len(players)
 	weaknesses = []
+	if team_size == 0:
+		return weaknesses
 	for player in players:
 		age += player.age
 		points += player.points
